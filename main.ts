@@ -1,8 +1,19 @@
-export function add(a: number, b: number): number {
-  return a + b;
+function readline(question: string) {
+    return new Promise<string>((resolve) => {
+        const stdin = process.stdin;
+        const stdout = process.stdout;
+
+        stdin.resume();
+        stdout.write(`${question}\n`);
+
+        stdin.once('data', (data) => {
+            resolve(data.toString().trim());
+        });
+    });
 }
 
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-if (import.meta.main) {
-  console.log("Add 2 + 3 =", add(2, 3));
-}
+const name = await readline("What is your name?")
+
+console.log(`Hello, ${name}!`);
+
+process.exit(0);
