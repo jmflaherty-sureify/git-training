@@ -12,7 +12,7 @@ function readline(question: string) {
     });
 }
 
-const name = await readline("What is your name?")
+const name = await readline("Who are you?")
 
 console.log(`Hello, ${name}!`);
 
